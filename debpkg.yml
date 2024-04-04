@@ -15,3 +15,13 @@ description:
     registry and CI/CD
 
     See https://about.gitea.com
+depends: postgresql
+
+files:
+  - file: etc/gitea.service
+    dest: /lib/systemd/system/gitea.service
+  - file: build/dist/usr/local/bin/gitea
+    dest: /usr/local/bin/gitea
+
+directories:
+  - build/dist/usr/local/share
