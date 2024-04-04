@@ -1,0 +1,17 @@
+# YAML description for Gitea, see https://github.com/go-gitea/gitea
+# This is a debpkg.yml specfile, see https://github.com/xor-gate/debpkg
+name: gitea
+version: 1.21.10
+architecture: amd64
+maintainer: Jerry Jacobs
+maintainer_email: jerry.jacobs@xor-gate.org
+homepage: https://github.com/xor-gate/gitea-debianizer
+description:
+  short: Git with a cup of tea!
+  long: >
+    Git with a cup of tea! Painless self-hosted
+    all-in-one software development service, including
+    Git hosting, code review, team collaboration, package
+    registry and CI/CD
+
+    See https://about.gitea.com
