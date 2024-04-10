@@ -20,8 +20,9 @@ depends: postgresql
 files:
   - file: etc/gitea.service
     dest: /lib/systemd/system/gitea.service
+    conffile: true
   - file: build/dist/usr/local/bin/gitea
     dest: /usr/local/bin/gitea
 
 directories:
-  - build/dist/usr/local/share
+  - ./usr/local/share
