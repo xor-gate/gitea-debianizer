@@ -14,3 +14,14 @@ a Debian package!
 * xz
 * tar
 * debpkg (golang)
+
+## Usages
+
+``
+# dpkg -i gitea-*.deb
+# cp /etc/gitea/app.example.ini /etc/gitea/app.ini
+# systemctl enable gitea
+# service gitea start
+# systemctl status gitea
+``
+

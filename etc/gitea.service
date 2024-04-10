@@ -1,3 +1,7 @@
+##
+# Systemd service file
+# See https://www.freedesktop.org/software/systemd/man/latest/systemd.service.html
+# Original from github.com/xor-gate/gitea-debianizer/etc/gitea.service
 # Based on https://raw.githubusercontent.com/go-gitea/gitea/release/v1.21/contrib/systemd/gitea.service
 [Unit]
 Description=Gitea (Git with a cup of tea)

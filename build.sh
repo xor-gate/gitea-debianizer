@@ -9,10 +9,12 @@ set -e
 GITHUB_GITEA_DL_BASE_URL="https://github.com/go-gitea/gitea/releases/download/v${GITEA_VERSION}"
 GITEA_XZ_RELEASE_URL="${GITHUB_GITEA_DL_BASE_URL}/gitea-${GITEA_VERSION}-linux-amd64.xz"
 GITEA_TARGZ_DOCS_URL="${GITHUB_GITEA_DL_BASE_URL}/gitea-docs-${GITEA_VERSION}.tar.gz"
+GITEA_CONF_EXAMPLE_URL="https://github.com/go-gitea/gitea/raw/v${GITEA_VERSION}/custom/conf/app.example.ini"
 GITEA_XZ_OUTFILE="${BUILD_DIR}/gitea.xz"
 GITEA_TARGZ_DOCS_OUTFILE="${BUILD_DIR}/gitea-docs.tar.gz"
 GITEA_DIST_EXE="${DIST_DIR}/usr/local/bin/gitea"
 GITEA_DEB_FILE="${BUILD_DIR}/gitea-${GITEA_VERSION}-amd64.deb"
+GITEA_CONF_EXAMPLE_OUTFILE="${BUILD_DIR}/app.example.ini"
 GITEA_DOCS_DIST_DIR="${PWD}/usr/local/share/gitea/docs" # NOTE: This is because github.com/xor-gate/debpkg doesn't support directory destinations (yet)
 
 mkdir -p "${DIST_DIR}/usr/local/bin"
@@ -24,6 +26,7 @@ if [ ! -f "${GITEA_DIST_EXE}" ]; then
 	curl --location -o ${GITEA_XZ_OUTFILE} ${GITEA_XZ_RELEASE_URL}
 	unxz ${GITEA_XZ_OUTFILE}
 	mv -v ${BUILD_DIR}/gitea ${GITEA_DIST_EXE} # TODO fixup unxz inplace
+	chmod +x ${GITEA_DIST_EXE}
 else
 	echo "[SKIP] Download and unpack gitea executable"
 fi
@@ -34,6 +37,11 @@ if [ ! -f "${GITEA_TARGZ_DOCS_OUTFILE}" ]; then
 	tar -xvf ${GITEA_TARGZ_DOCS_OUTFILE} -C ${GITEA_DOCS_DIST_DIR} 
 else
 	echo "[SKIP] Docs already downloaded and unpacked"
+fi
+
+if [ ! -f "${GITEA_CONF_EXAMPLE_OUTFILE}" ]; then
+	echo "[RUN] Downloading "
+	curl --location -o ${GITEA_CONF_EXAMPLE_OUTFILE} ${GITEA_CONF_EXAMPLE_URL}
 fi
 
 if [ ! -f "${GITEA_DEB_FILE}" ]; then
