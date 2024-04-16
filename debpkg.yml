@@ -1,7 +1,7 @@
 # YAML description for Gitea, see https://github.com/go-gitea/gitea
 # This is a debpkg.yml specfile, see https://github.com/xor-gate/debpkg
 name: gitea
-version: 1.21.10
+version: 1.21.11
 architecture: amd64
 maintainer: Jerry Jacobs
 maintainer_email: jerry.jacobs@xor-gate.org
@@ -15,7 +15,6 @@ description:
     registry and CI/CD
 
     See https://about.gitea.com
-depends: postgresql adduser
 
 files:
   - file: etc/gitea.service
